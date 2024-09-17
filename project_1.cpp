@@ -56,4 +56,6 @@ int main(){
     double p_3_100 = (100.0*max_proj3/proj3);
     double p_4_100 = (100.0*max_proj4/proj4);
     double p_5_100 = (100.0*max_proj5/proj5);
+
+    double e100 = (3/4*f100)+(1/4*m100);
 }
