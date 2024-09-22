@@ -1,61 +1,167 @@
 #include <iostream>
-using namespace std;
+#include <cmath>
 
 int main();
 
 int main(){
     //Declare variables
-    double max_exam, exam, max_midterm, midterm, max_proj1, proj1, max_proj2, proj2, max_proj3, proj3, max_proj4, proj4, max_proj5, proj5;
+    int max_exam, max_midterm, max_proj1, max_proj2, max_proj3, max_proj4, max_proj5;
+    double exam, midterm, proj1, proj2, proj3, proj4, proj5;
 
     //Final exam
-    std::cout<<"Maximum grade in the final examination: "<<std::endl;
+    std::cout<<"Maximum grade in the final examination: ";
     std::cin>>max_exam;
-    std::cout<<"Achieved grade in the final examination: "<<std::endl;
+    while(max_exam<0){
+        std::cout<<"Maximum grade in the final examination: ";
+        std::cin>>max_exam;
+    }
+    std::cout<<"Achieved grade in the final examination: ";
     std::cin>>exam;
+    while((exam<0)||(exam>max_exam)){
+        std::cout<<"Achieved grade in the final examination: ";
+        std::cin>>exam;
+    }
+
 
     //Midterm
-    std::cout<<"Maximum grade in the midterm: "<<std::endl;
+    std::cout<<"Maximum grade in the midterm examination: ";
     std::cin>>max_midterm;
-    std::cout<<"Achieved grade in the midterm: "<<std::endl;
+    while(max_midterm<0){
+        std::cout<<"Maximum grade in the midterm examination: ";
+        std::cin>>max_midterm;
+    }
+    std::cout<<"Achieved grade in the midterm examination: ";
     std::cin>>midterm;
+    while((midterm<0)||(midterm>max_midterm)){
+        std::cout<<"Achieved grade in the midterm examination: ";
+        std::cin>>midterm;
+    }
+
 
     //Project 1
-    std::cout<<"Maximum grade in project 1: "<<std::endl;
+    std::cout<<"Maximum grade in project 1: ";
     std::cin>>max_proj1;
-    std::cout<<"Achieved grade in project 1: "<<std::endl;
+    while(max_proj1<0){
+        std::cout<<"Maximum grade in project 1: ";
+        std::cin>>max_proj1;
+    }
+    std::cout<<"Achieved grade in project 1: ";
     std::cin>>proj1;
+    while((proj1<0)||(proj1>max_proj1)){
+        std::cout<<"Achieved grade in project 1: ";
+        std::cin>>proj1;
+    }
 
     //Project 2
-    std::cout<<"Maximum grade in project 2: "<<std::endl;
+    std::cout<<"Maximum grade in project 2: ";
     std::cin>>max_proj2;
-    std::cout<<"Achieved grade in project 2: "<<std::endl;
+    while(max_proj2<0){
+        std::cout<<"Maximum grade in project 2: ";
+        std::cin>>max_proj2;
+    }
+    std::cout<<"Achieved grade in project 2: ";
     std::cin>>proj2;
+    while((proj2<0)||(proj2>max_proj2)){
+        std::cout<<"Achieved grade in project 2: ";
+        std::cin>>proj2;
+    }
 
     //Project 3
-    std::cout<<"Maximum grade in project 3: "<<std::endl;
+    std::cout<<"Maximum grade in project 3: ";
     std::cin>>max_proj3;
-    std::cout<<"Achieved grade in project 3: "<<std::endl;
+    while(max_proj3<0){
+        std::cout<<"Maximum grade in project 3: ";
+        std::cin>>max_proj3;
+    }
+    std::cout<<"Achieved grade in project 3: ";
     std::cin>>proj3;
+    while((proj3<0)||(proj3>max_proj3)){
+        std::cout<<"Achieved grade in project 3: ";
+        std::cin>>proj3;
+    }
 
     //Project 4
-    std::cout<<"Maximum grade in project 4: "<<std::endl;
+    std::cout<<"Maximum grade in project 4: ";
     std::cin>>max_proj4;
-    std::cout<<"Achieved grade in project 1: "<<std::endl;
+    while(max_proj4<0){
+        std::cout<<"Maximum grade in project 4: ";
+        std::cin>>max_proj4;
+    }
+    std::cout<<"Achieved grade in project 4: ";
     std::cin>>proj4;
+    while((proj4<0)||(proj4>max_proj4)){
+        std::cout<<"Achieved grade in project 4: ";
+        std::cin>>proj4;
+    }
 
     //Project 5
-    std::cout<<"Maximum grade in project 4: "<<std::endl;
+    std::cout<<"Maximum grade in project 5: ";
     std::cin>>max_proj5;
-    std::cout<<"Achieved grade in project 1: "<<std::endl;
+    while(max_proj5<0){
+        std::cout<<"Maximum grade in project 5: ";
+        std::cin>>max_proj5;
+    }
+    std::cout<<"Achieved grade in project 5: ";
     std::cin>>proj5;
+    while((proj5<0)||(proj5>max_proj5)){
+        std::cout<<"Achieved grade in project 5: ";
+        std::cin>>proj5;
+    }
 
-    double f100 = (100.0*max_exam/exam);
-    double m100 = (100.0*max_midterm/midterm);
-    double p_1_100 = (100.0*max_proj1/proj1);
-    double p_2_100 = (100.0*max_proj2/proj2);
-    double p_3_100 = (100.0*max_proj3/proj3);
-    double p_4_100 = (100.0*max_proj4/proj4);
-    double p_5_100 = (100.0*max_proj5/proj5);
+    //Get supremacy of final examination
+    double f100 = (100.0*exam/max_exam);
+    double m100 = (100.0*midterm/max_midterm);
+    double p_1_100 = (100.0*proj1/max_proj1);
+    double p_2_100 = (100.0*proj2/max_proj2);
+    double p_3_100 = (100.0*proj3/max_proj3);
+    double p_4_100 = (100.0*proj4/max_proj4);
+    double p_5_100 = (100.0*proj5/max_proj5);
 
-    double e100 = (3/4*f100)+(1/4*m100);
+
+    //Replace grades if needed
+    if(m100<f100){
+        m100 = f100;
+    }
+    if(p_1_100<f100){
+        p_1_100 = f100;
+    }
+    if(p_2_100<f100){
+        p_2_100 = f100;
+    }
+    if(p_3_100<f100){
+        p_3_100 = f100;
+    }
+    if(p_4_100<f100){
+        p_4_100 = f100;
+    }
+    if(p_5_100<f100){
+        p_5_100 = f100;
+    }
+    
+    //Weighted examination average
+    double e100 = (f100*3/4)+(m100/4);
+
+    //Project grade
+    double p100 = (p_1_100+p_2_100+p_3_100+p_4_100+p_5_100)/5;
+
+    //Final grade calculation
+    int final_grade;
+
+    if (e100<=40){
+        final_grade = e100;
+    }
+
+    else if (e100>=60){
+        final_grade = (e100*2/3)+(p100/3);
+    }
+
+    else{
+        final_grade = (e100*5/3)-(e100*e100/60)+(p100*e100/60)-(p100*2/3);
+    }
+
+    //Round final grade
+    final_grade = std::round(final_grade);
+
+    //Print final grade
+    std::cout<<"Final grade: "<<final_grade<<std::endl;
 }
