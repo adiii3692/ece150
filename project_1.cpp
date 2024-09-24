@@ -5,13 +5,13 @@ int main();
 
 int main(){
     //Declare variables
-    int max_exam, max_midterm, max_proj1, max_proj2, max_proj3, max_proj4, max_proj5;
+    double max_exam, max_midterm, max_proj1, max_proj2, max_proj3, max_proj4, max_proj5;
     double exam, midterm, proj1, proj2, proj3, proj4, proj5;
 
     //Final exam
     std::cout<<"Maximum grade in the final examination: ";
     std::cin>>max_exam;
-    while(max_exam<0){
+    while((max_exam<=0)||(max_exam!=std::round(max_exam+ 1e-12))){
         std::cout<<"Maximum grade in the final examination: ";
         std::cin>>max_exam;
     }
@@ -26,7 +26,7 @@ int main(){
     //Midterm
     std::cout<<"Maximum grade in the midterm examination: ";
     std::cin>>max_midterm;
-    while(max_midterm<0){
+    while((max_midterm<=0)||(max_midterm!=std::round(max_midterm+ 1e-12))){
         std::cout<<"Maximum grade in the midterm examination: ";
         std::cin>>max_midterm;
     }
@@ -41,7 +41,7 @@ int main(){
     //Project 1
     std::cout<<"Maximum grade in project 1: ";
     std::cin>>max_proj1;
-    while(max_proj1<0){
+    while((max_proj1<=0)||(max_proj1!=std::round(max_proj1+ 1e-12))){
         std::cout<<"Maximum grade in project 1: ";
         std::cin>>max_proj1;
     }
@@ -55,7 +55,7 @@ int main(){
     //Project 2
     std::cout<<"Maximum grade in project 2: ";
     std::cin>>max_proj2;
-    while(max_proj2<0){
+    while((max_proj2<=0)||(max_proj2!=std::round(max_proj2+ 1e-12))){
         std::cout<<"Maximum grade in project 2: ";
         std::cin>>max_proj2;
     }
@@ -69,7 +69,7 @@ int main(){
     //Project 3
     std::cout<<"Maximum grade in project 3: ";
     std::cin>>max_proj3;
-    while(max_proj3<0){
+    while((max_proj3<=0)||(max_proj3!=std::round(max_proj3+ 1e-12))){
         std::cout<<"Maximum grade in project 3: ";
         std::cin>>max_proj3;
     }
@@ -83,7 +83,7 @@ int main(){
     //Project 4
     std::cout<<"Maximum grade in project 4: ";
     std::cin>>max_proj4;
-    while(max_proj4<0){
+    while((max_proj4<=0)||(max_proj4!=std::round(max_proj4+ 1e-12))){
         std::cout<<"Maximum grade in project 4: ";
         std::cin>>max_proj4;
     }
@@ -97,13 +97,13 @@ int main(){
     //Project 5
     std::cout<<"Maximum grade in project 5: ";
     std::cin>>max_proj5;
-    while(max_proj5<0){
+    while((max_proj5<=0)||(max_proj5!=std::round(max_proj5+ 1e-12))){
         std::cout<<"Maximum grade in project 5: ";
         std::cin>>max_proj5;
     }
     std::cout<<"Achieved grade in project 5: ";
     std::cin>>proj5;
-    while((proj5<0)||(proj5>max_proj5)){
+    while((proj5<0)||(proj4>max_proj5)){
         std::cout<<"Achieved grade in project 5: ";
         std::cin>>proj5;
     }
@@ -145,7 +145,7 @@ int main(){
     double p100 = (p_1_100+p_2_100+p_3_100+p_4_100+p_5_100)/5;
 
     //Final grade calculation
-    int final_grade;
+    double final_grade{};
 
     if (e100<=40){
         final_grade = e100;
@@ -160,8 +160,10 @@ int main(){
     }
 
     //Round final grade
-    final_grade = std::round(final_grade);
+    int int_final_grade = std::round(final_grade+ 1e-12);
 
     //Print final grade
-    std::cout<<"Final grade: "<<final_grade<<std::endl;
+    std::cout<<"Final grade: "<<int_final_grade<<std::endl;
+
+    return 0;
 }
