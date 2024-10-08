@@ -169,14 +169,14 @@ unsigned int swap_bytes(unsigned int n, unsigned int b0, unsigned int b1){
         return n;
     }
 
-    // unsigned int isolater{255};// 11111111
+    unsigned int isolater{255};// 11111111
 
     //Isolate the bytes to swap
-    // unsigned int byte0 = n & (isolater<<(8*b0));
-    // unsigned int byte1 = n & (isolater<<(8*b1));
+    unsigned int byte0 = isolater & (n>>(8*b0));
+    unsigned int byte1 = isolater & (n>>(8*b1));
 
-    // std::cout<<"Byte 0: "<<byte0<<std::endl;
-    // std::cout<<"Byte 1: "<<byte1<<std::endl;
+    std::cout<<"Byte 0: "<<byte0<<std::endl;
+    std::cout<<"Byte 1: "<<byte1<<std::endl;
 
     return n;
 }
@@ -193,8 +193,10 @@ int main(){
     // unsigned int check{n << 8};
     // std::cout<<check<<std::endl;
 
-    // unsigned int n = 1093;
-    // swap_bytes(n,0,1);
-    return 0;
+    unsigned int n = 56128356;
+    swap_bytes(n,0,3);
+
+    // std::cout<<(255 & (1093>>0))<<std::endl;
+    // return 0;
 }
 // g++ -o project_2 project_2.cpp
