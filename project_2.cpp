@@ -10,15 +10,16 @@ unsigned int swap_bytes(unsigned int n, unsigned int b0, unsigned int b1);
 unsigned int exponent(unsigned int n);
 
 /**
- * @brief Prints out the integer 10^n 
+ * @brief Prints out the integer base^n
  * 
- * @param n - The power to which 10 needs to be raised to.
- * @return Returns the unsigned int 10^n.
+ * @param base - The base to which the power needs to be raised.
+ * @param n - The power to which the base needs to be raised to.
+ * @return Returns the unsigned int base^n.
  */
-unsigned int exponent(unsigned int n){
+unsigned int exponent(unsigned int base, unsigned int n){
     unsigned int power = 1;
     for (int i{1};i<=n;i++){
-        power *= 10;
+        power *= base;
     }
 
     return power;
@@ -99,7 +100,7 @@ unsigned int log10(unsigned int n){
     unsigned int count = 0;
 
     //Keeps track of the various powers of 10
-    unsigned int value = exponent(count);
+    unsigned int value = exponent(10,count);
 
     //Keep looping until we cross n and then find the exponent
     while(value<=n){
@@ -108,7 +109,7 @@ unsigned int log10(unsigned int n){
         if (count>9){
             return 9;
         }
-        value = exponent(count);
+        value = exponent(10,count);
     }
 
     //If number is less than 10
@@ -120,19 +121,43 @@ unsigned int log10(unsigned int n){
 }
 
 /**
- * @brief Prints out the largest integer m such that 10^m <= n 
+ * @brief Prints out how many times a certain bit(0 or 1) apepars in a number
  * 
- * @param n - The integer parameter which defines the maximum for 10^m.
- * @return Returns the largest unsigned int m such that 10^m <= n.
+ * @param n - The integer parameter for which we need to check the number of times a bit occurs
+ * @param bit - The bit (0 or 1) we need to check for in the number
+ * @return Returns an unsigned int which is the count of how many times a bit appears in a number
  */
 unsigned int count(unsigned int n, unsigned int bit){
+    //Check if user has entered 0 or 1 for the bit
+    assert((bit==0)||(bit==1));
 
+    //Use this variable to check if the nth bit is a 1
+    unsigned int MASK_1{1};
+
+    //Keeps track of how many 1 bits there are
+    unsigned int oneCount = 0;
+
+    //Loop through all the bits of n to check if the bit is a 1 and if it is, increment the counter
+    for(int i{0};i<32;i++){
+        if (n & (MASK_1 << i)){
+            oneCount += 1;
+        }
+    }
+
+    //Return the count
+    if (bit==1){
+        return oneCount;
+    }
+    return (32-oneCount);
 }
+
+
 
 int main();
 int main(){
     // pattern(1);
-    unsigned int n = 42949695;
-    std::cout<<log10(n)<<std::endl;
+    unsigned int n = 1244;
+    // std::cout<<log10(n)<<std::endl;
+    std::cout<<count(n,0)<<std::endl;
 }
 // g++ -o project_2 project_2.cpp
