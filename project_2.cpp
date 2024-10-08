@@ -7,7 +7,7 @@ unsigned int count(unsigned int n, unsigned int bit);
 unsigned int swap_bytes(unsigned int n, unsigned int b0, unsigned int b1);
 
 //Helper function I made to calculate exponents without cmath
-unsigned int exponent(unsigned int n);
+unsigned int exponent(unsigned int base, unsigned int n);
 
 /**
  * @brief Prints out the integer base^n
@@ -18,7 +18,8 @@ unsigned int exponent(unsigned int n);
  */
 unsigned int exponent(unsigned int base, unsigned int n){
     unsigned int power = 1;
-    for (int i{1};i<=n;i++){
+    unsigned int i;
+    for (i=1;i<=n;i++){
         power *= base;
     }
 
@@ -151,13 +152,49 @@ unsigned int count(unsigned int n, unsigned int bit){
     return (32-oneCount);
 }
 
+/**
+ * @brief Swaps two bytes of an unsigned int n
+ * 
+ * @param n - The unsigned int for which we need to swap bytes
+ * @param b0 - The byte we need to swap [0,3]
+ * @param b1 - The other byte we need to swap [0,3]
+ * @return Returns an unsigned int with the bytes swapped or unswapped if b0 ==  b1
+ */
+unsigned int swap_bytes(unsigned int n, unsigned int b0, unsigned int b1){
+    //Check if b0 and b1 are between 0 and 3
+    assert(((b0>=0)&&(b0<=3))&&((b1>=0)&&(b1<=3)));
+
+    //Return unchanged n if b0 and b1 are the same
+    if (b1==b0){
+        return n;
+    }
+
+    // unsigned int isolater{255};// 11111111
+
+    //Isolate the bytes to swap
+    // unsigned int byte0 = n & (isolater<<(8*b0));
+    // unsigned int byte1 = n & (isolater<<(8*b1));
+
+    // std::cout<<"Byte 0: "<<byte0<<std::endl;
+    // std::cout<<"Byte 1: "<<byte1<<std::endl;
+
+    return n;
+}
 
 
 int main();
 int main(){
     // pattern(1);
-    unsigned int n = 1244;
+    // unsigned int n = 4294967295;
     // std::cout<<log10(n)<<std::endl;
-    std::cout<<count(n,0)<<std::endl;
+    // std::cout<<count(n,1)<<std::endl;
+    // unsigned int n = 255;
+
+    // unsigned int check{n << 8};
+    // std::cout<<check<<std::endl;
+
+    // unsigned int n = 1093;
+    // swap_bytes(n,0,1);
+    return 0;
 }
 // g++ -o project_2 project_2.cpp
